@@ -29,7 +29,7 @@ const teamMembers = [
     name: "Piotr Milian",
     category: "Frontend",
     description: "Senior full-stack developer with extensive expertise in React, Next.js, and Python frameworks. Proven track record in architecting and building scalable enterprise applications with modern databases and cloud services. Strong technical leadership in both frontend and backend development.",
-    image: "/Milian.jpeg",
+    image: "/Mil.png",
     linkedin: "https://www.linkedin.com/in/piotr-milian/",
     skills: [
       { name: "React / Next.js", level: 88 },
@@ -177,12 +177,12 @@ function App() {
     <>
       {/* Top Navigation */}
       <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
-        <div className="w-full px-6 sm:px-8 lg:px-12">
+        <div className="w-full px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-4 sm:gap-8">
               <div className="flex items-center gap-2 group cursor-pointer">
                 {/* Webxkey Logo */}
-                <img src="/logo.png" alt="Webxkey Logo" className="h-14 object-contain brightness-110" />
+                <img src="/logo.png" alt="Webxkey Logo" className="h-10 sm:h-12 md:h-14 object-contain brightness-110" />
               </div>
               <nav className="hidden md:flex items-center gap-6">
                 <button
@@ -205,44 +205,65 @@ function App() {
                 </button>
               </nav>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
+              {/* Mobile Navigation */}
+              <div className="md:hidden flex gap-2">
+                <button
+                  onClick={() => setActiveTab('Directory')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${activeTab === 'Directory'
+                    ? 'bg-primary text-white'
+                    : 'bg-white/5 text-slate-400 hover:text-primary'
+                    }`}
+                >
+                  Team
+                </button>
+                <button
+                  onClick={() => setActiveTab('Stack')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${activeTab === 'Stack'
+                    ? 'bg-primary text-white'
+                    : 'bg-white/5 text-slate-400 hover:text-primary'
+                    }`}
+                >
+                  Stack
+                </button>
+              </div>
               <a
                 href="mailto:contact@webxkey.com"
-                className="px-5 py-2 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2"
+                className="px-3 sm:px-5 py-2 rounded-lg bg-primary text-white text-xs sm:text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-1 sm:gap-2"
               >
-                <span className="material-symbols-outlined text-lg">mail</span>
-                Contact Us
+                <span className="material-symbols-outlined text-base sm:text-lg">email</span>
+                <span className="hidden sm:inline">Contact Us</span>
               </a>
             </div>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-12">
         {activeTab === 'Directory' ? (
           <>
             {/* Page Heading */}
-            <div className="mb-12 text-center">
+            <div className="mb-8 sm:mb-12 text-center">
               <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-4">
                 Development Team
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 sm:mb-6 tracking-tight px-4">
                 The Minds Behind <span className="text-primary">Your Success</span>
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed px-4">
                 A collective of visionary developers, designers, and engineers crafting cutting-edge digital experiences that transform ideas into reality.
               </p>
             </div>
 
 
             {/* Member Cards List */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {teamMembers.map((member, idx) => (
-                <div key={idx} className="glass-card rounded-xl p-6 md:p-8 flex flex-col md:flex-row gap-8 neon-glow transition-all duration-300">
-                  <div className="flex flex-col items-center gap-4 min-w-[180px]">
+                <div key={idx} className="glass-card rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 neon-glow transition-all duration-300">
+                  <div className="flex flex-col items-center gap-3 sm:gap-4 md:min-w-[180px]">
                     <div className="relative">
                       <div className="absolute inset-0 rounded-full border-2 border-primary animate-pulse opacity-50"></div>
-                      <div className="h-32 w-32 rounded-full border-4 border-navy-muted overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url('${member.image}')` }}>
+                      <div className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 rounded-full border-4 border-navy-muted overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url('${member.image}')` }}>
                       </div>
                     </div>
                     <div className="flex justify-center">
@@ -251,19 +272,18 @@ function App() {
                       </a>
                     </div>
                   </div>
-                  <div className="flex-1 space-y-4">
+                  <div className="flex-1 space-y-3 sm:space-y-4">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                      <div>
-                        <h3 className="text-2xl font-bold text-white tracking-tight">{member.name}</h3>
+                      <div className="text-center md:text-left">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">{member.name}</h3>
                       </div>
-
                     </div>
-                    <p className="text-slate-400 text-sm leading-relaxed">
+                    <p className="text-slate-400 text-sm sm:text-base leading-relaxed text-center md:text-left">
                       {member.description}
                     </p>
-                    <div className="flex flex-wrap gap-2 pt-2">
+                    <div className="flex flex-wrap gap-2 pt-2 justify-center md:justify-start">
                       {member.skills.map((skill, sIdx) => (
-                        <span key={sIdx} className="px-3 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-semibold border border-primary/20">
+                        <span key={sIdx} className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-primary/10 text-primary rounded-full text-xs font-semibold border border-primary/20">
                           {skill.name}
                         </span>
                       ))}
@@ -274,39 +294,39 @@ function App() {
             </div>
 
             {/* Footer Stats */}
-            <div className="mt-20 p-8 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-white/5 text-center">
-              <div className="flex flex-wrap justify-around gap-8">
+            <div className="mt-12 sm:mt-16 md:mt-20 p-6 sm:p-8 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-white/5 text-center">
+              <div className="flex flex-wrap justify-around gap-6 sm:gap-8">
                 <div>
-                  <div className="text-4xl font-black text-white">24</div>
-                  <div className="text-slate-400 text-sm font-medium uppercase tracking-widest mt-1">Experts</div>
+                  <div className="text-3xl sm:text-4xl font-black text-white">24</div>
+                  <div className="text-slate-400 text-xs sm:text-sm font-medium uppercase tracking-widest mt-1">Experts</div>
                 </div>
-                <div className="w-px bg-white/10 hidden md:block"></div>
+                <div className="w-px bg-white/10 hidden sm:block"></div>
                 <div>
-                  <div className="text-4xl font-black text-white">20+</div>
-                  <div className="text-slate-400 text-sm font-medium uppercase tracking-widest mt-1">Tech Stacks</div>
+                  <div className="text-3xl sm:text-4xl font-black text-white">20+</div>
+                  <div className="text-slate-400 text-xs sm:text-sm font-medium uppercase tracking-widest mt-1">Tech Stacks</div>
                 </div>
-                <div className="w-px bg-white/10 hidden md:block"></div>
+                <div className="w-px bg-white/10 hidden sm:block"></div>
                 <div>
-                  <div className="text-4xl font-black text-white">25+</div>
-                  <div className="text-slate-400 text-sm font-medium uppercase tracking-widest mt-1">Success Projects</div>
+                  <div className="text-3xl sm:text-4xl font-black text-white">25+</div>
+                  <div className="text-slate-400 text-xs sm:text-sm font-medium uppercase tracking-widest mt-1">Success Projects</div>
                 </div>
               </div>
             </div>
-            <footer className="mt-12 text-center text-slate-500 text-sm pb-12">
+            <footer className="mt-8 sm:mt-12 text-center text-slate-500 text-xs sm:text-sm pb-8 sm:pb-12 px-4">
               © 2026 Webxkey. All rights reserved. Built with precision and code.
             </footer>
           </>
         ) : (
           <>
             {/* Stack Page Heading */}
-            <div className="mb-12">
+            <div className="mb-8 sm:mb-12">
               <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-4">
                 Technology Stack
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 tracking-tight px-4">
                 Our Tech <span className="text-primary">Arsenal</span>
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl">
+              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl px-4">
                 Cutting-edge technologies and frameworks powering our innovative solutions.
               </p>
             </div>
